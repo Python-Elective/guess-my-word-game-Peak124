@@ -1,3 +1,5 @@
+#help by Tarit and some CHATGPT
+
 
 # -----------------------------------
 # Helper code
@@ -52,6 +54,21 @@ def is_word_guessed(secret_word, letters_guessed):
     # FILL IN YOUR CODE HERE...
     pass
 
+    for every letter in secret_word:
+        if letter not in letters_guessed:
+          return False
+        else: 
+          return True
+
+    #pseudocode
+    # for every letter in secret_word:
+    #     check if letter is in letters_guessed
+    #       stop looking and return false
+
+    #All letters guessed correctly, so return True
+
+
+
 
 ### Testcases
 # print(is_word_guessed('apple', ['a', 'e', 'i', 'k', 'p', 'r', 's']))
@@ -68,6 +85,23 @@ def get_guessed_word(secret_word, letters_guessed):
       what letters in secret_word have been guessed so far.
     '''
     # FILL IN YOUR CODE HERE...
+      #pseudocode
+      #output string
+        #for every letter in secret_word
+        # check if letter in secret word
+        #   concatenate += letter onto output_string
+        # otherwise
+        #   concatenate += underscore space '__' onto our
+        #return output_string
+    
+        output_string = ''
+        
+        for letter in secret_word:
+          if letter in secret_word:
+              output_string += letter
+            else:
+              output_string += '_'
+          return output_string
     pass
     
     
