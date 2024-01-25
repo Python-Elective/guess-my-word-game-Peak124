@@ -184,7 +184,7 @@ def game_loop(secret_word):
     letters_guessed = []
     mistakes_made = 0
     max_attempts = 8
-    attempts = 0
+    attempts = 2
 
     print()
     print('Let the game begin!!!')
@@ -193,13 +193,15 @@ def game_loop(secret_word):
       attempts = max_attempts - mistakes_made
       print("You have", attempts, "attempts left")
       print(f"Letters available: {get_available_letters(letters_guessed)}")
-      guess = input("Guess a letter! ").strip()
+      guess = input("Guess a letter!: ")
 
       if guess in letters_guessed:
-        print("You tried this letter already!!!!")
+        print("You tried this letter already!!:")
+        print(get_guessed_word(secret_word, letters_guessed))
       elif guess in secret_word:
         letters_guessed.append(guess)
         print(f"Correct!!, available letters: {get_available_letters(letters_guessed)}")
+        print(get_guessed_word(secret_word, letters_guessed))
       else:
         print(f"Incorrect, this letter isn't in my word!: {get_guessed_word(secret_word, letters_guessed)}")
         letters_guessed.append(guess)
@@ -211,12 +213,13 @@ def game_loop(secret_word):
         print('----------')
         print('You win!!, the word was', secret_word)
         print('It took you:', attempts, 'tries')
-        quit()
+        break
 
       if attempts == 0:
         print('----------')
-        print('You lose!!, the word was', secret_word) 
-        quit()
+        print('You lose!!, the word was', secret_word)
+        print() 
+        break
 
       
     
@@ -237,7 +240,7 @@ def game_loop(secret_word):
 
 def main():
     secret_word = choose_word(word_list)
-    game_loop('candy')    #secret word
+    game_loop(secret_word)    #secret word
 
 
 # Testcases
