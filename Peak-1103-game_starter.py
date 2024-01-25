@@ -184,13 +184,13 @@ def game_loop(secret_word):
     letters_guessed = []
     mistakes_made = 0
     max_attempts = 8
-    attempts = 2
+    attempts = max_attempts
 
     print()
     print('Let the game begin!!!')
     print('I am thinking of a word with', len(secret_word), 'letters')
-    while True:
-      attempts = max_attempts - mistakes_made
+    
+    while attempts > 0:
       print("You have", attempts, "attempts left")
       print(f"Letters available: {get_available_letters(letters_guessed)}")
       guess = input("Guess a letter!: ")
@@ -205,21 +205,22 @@ def game_loop(secret_word):
       else:
         print(f"Incorrect, this letter isn't in my word!: {get_guessed_word(secret_word, letters_guessed)}")
         letters_guessed.append(guess)
-        mistakes_made += 1
+        attempts -= 1
 
       print()
 
       if all(letter in letters_guessed for letter in secret_word):
         print('----------')
         print('You win!!, the word was', secret_word)
-        print('It took you:', attempts, 'tries')
+        print('It took you:', max_attempts - attempts, 'tries')
         break
 
       if attempts == 0:
         print('----------')
         print('You lose!!, the word was', secret_word)
-        print() 
+        print()
         break
+        
 
       
     
@@ -240,7 +241,7 @@ def game_loop(secret_word):
 
 def main():
     secret_word = choose_word(word_list)
-    game_loop(secret_word)    #secret word
+    game_loop('gamers')    #secret word
 
 
 # Testcases
