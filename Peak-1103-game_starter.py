@@ -221,9 +221,6 @@ def game_loop(secret_word):
         print()
         break
         
-
-      
-    
     # while True:   #game true
     #     if player == dead
     #       you dieee
@@ -241,7 +238,7 @@ def game_loop(secret_word):
 
 def main():
     secret_word = choose_word(word_list)
-    game_loop('gamers')    #secret word
+    game_loop(secret_word)    #secret word
 
 
 # Testcases
